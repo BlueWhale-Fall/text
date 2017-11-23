@@ -1,0 +1,52 @@
+ 1.在一台电脑上建立一个git仓库A，并在相同的电脑上上传文件。叫master，主干路。
+若，在另外一台电脑上，向仓库A上传文件，则另外一台电脑就属于分支。
+若直接在分支上上传文件，则会出现这个问题。
+（hint：Updates were rejected because the remote contains work that you do
+ not have locally. This is usually caused by another repository pushing
+to the same ref. You may want to first integrate the remote changes
+(e.g., 'git pull ...') before pushing again.
+ See the 'Note about fast-forwards' in 'git push --help' for details.）
+hint：暗示。
+更新被拒绝，因为远程包含您所做的工作在本地没有。这通常是由另一个存储库也推送了文件。
+你可能在再次推送文件之前，要去统一整合这个变。例如，git pull。先 拉下来就可以合并。
+
+push之前要pull一下，合并分支。
+
+branch分支 
+
+
+合并步骤：
+
+1、（先进入项目文件夹）通过命令 git init 把这个目录变成git可以管理的仓库
+
+git init
+
+2、把文件添加到版本库中，使用命令 git add .添加到暂存区里面去，不要忘记后面的小数点“.”，意为添加文件夹下的所有文件
+
+git add .
+
+3、用命令 git commit告诉Git，把文件提交到仓库。引号内为提交说明
+
+git commit -m 'first commit'
+
+4、关联到远程库
+
+git remote add origin 你的远程库地址
+
+如：
+
+git remote add origin https://github.com/cade8800/ionic-demo.git
+
+5、获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）
+
+git pull --rebase origin master
+
+6、把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。
+
+git push -u origin master
+
+*、状态查询命令
+
+git status
+
+
